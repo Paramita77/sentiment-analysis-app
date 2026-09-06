@@ -32,3 +32,7 @@ IMDB Dataset of 50K Movie Reviews (from Kaggle)
 ## Author
 
 Paramita Dutta
+
+## 🔗 Live Demo
+
+https://sentiment-analysis-app-96cab6wf725yrumjxmppab.streamlit.app/
