@@ -1,19 +1,20 @@
+
 import streamlit as st
 import joblib
 import re
 
-# Saved model এবং vectorizer load করা
+# Load the saved model and vectorizer
 model = joblib.load('sentiment_model.pkl')
 vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
-# Text clean করার একই function (train_model.py থেকে কপি)
+# Text cleaning function (same function used in train_model.py)
 def clean_text(text):
     text = re.sub(r'<.*?>', ' ', text)
     text = re.sub(r'[^a-zA-Z\s]', '', text)
     text = text.lower()
     return text
 
-# Web App এর UI
+# Web App UI
 st.title("🎬 Movie Review Sentiment Analyzer")
 st.write("Enter a movie review below and find out if it's Positive or Negative!")
 
@@ -26,7 +27,7 @@ if st.button("Analyze Sentiment"):
         cleaned = clean_text(user_input)
         vectorized = vectorizer.transform([cleaned])
         prediction = model.predict(vectorized)[0]
-        
+
         if prediction == 1:
             st.success("✅ This review is **Positive**! 😊")
         else:
